@@ -1,14 +1,23 @@
 import { createApp } from 'vue'
-import ElementPlus from 'element-plus'
+
+//#region css
+import 'virtual:windi.css'
 import 'element-plus/dist/index.css'
-import { router } from './router'
+//#endregion
+
+//#region package
+import ElementPlus from 'element-plus'
 import { useRouter, useRoute } from 'vue-router'
 import { useStore } from "vuex";
-import { elNotification, elMessageBox } from './utils/ele'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import 'virtual:windi.css'
+//#endregion
+
+//#region 自定义
+import { elNotification, elMessageBox } from './utils/ele'
 import store from './store'
+import { router } from './router'
 import App from './App.vue'
+//#endregion
 
 
 const app = createApp(App)

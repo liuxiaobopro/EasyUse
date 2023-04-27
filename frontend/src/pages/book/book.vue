@@ -96,6 +96,6 @@ const bookshelf = () => {
 <style scoped>
 .book-icon {
     font-size: 30px;
-    @apply text-blue-500 cursor-pointer mx-3;
+    @apply cursor-pointer mx-3;
 }
 </style>
