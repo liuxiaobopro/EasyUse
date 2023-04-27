@@ -2,8 +2,14 @@
     <div>
         <el-row :gutter="20" class="mt-2">
             <el-col :span="10" style="text-align: end;">
-                <el-icon @click="drawer = true" class="text-blue-500 cursor-pointer" style="font-size: 30px;">
+                <el-icon @click="menuDrawer = true" class="book-icon">
                     <Menu />
+                </el-icon>
+                <el-icon @click="uploadDrawer = true" class="book-icon">
+                    <UploadFilled />
+                </el-icon>
+                <el-icon class="book-icon" @click="bookshelf">
+                    <Notebook />
                 </el-icon>
             </el-col>
             <el-col :span="10">
@@ -16,12 +22,26 @@
             <div v-if="loading" style="text-align: center;">正在拼命加载中...</div>
         </div>
 
-        <el-drawer v-model="drawer" title="目录" :with-header="false" direction="ltr">
+        <el-drawer v-model="menuDrawer" title="目录" :with-header="false" direction="ltr">
             <ul>
                 <li v-for="(item, index) in booknavigation" :key="index">
                     <a class="cursor-pointer" @click="goto(item.href)">{{ item.label }}</a>
                 </li>
             </ul>
+        </el-drawer>
+
+        <el-drawer v-model="uploadDrawer" title="上传" :with-header="false" direction="rtl">
+            <el-upload class="upload-demo" drag>
+                <el-icon class="el-icon--upload"><upload-filled /></el-icon>
+                <div class="el-upload__text">
+                    Drop file here or <em>click to upload</em>
+                </div>
+                <template #tip>
+                    <div class="el-upload__tip">
+                        点击或拖拽文件到此处上传(当前仅支持epub格式)
+                    </div>
+                </template>
+            </el-upload>
         </el-drawer>
     </div>
 </template>
@@ -33,7 +53,8 @@ import epub from 'epubjs'
 
 //#region init
 const loading = ref(true)
-const drawer = ref(false)
+const menuDrawer = ref(false)
+const uploadDrawer = ref(false)
 // const bookUrl = 'book/c++ primer plus.epub'
 const bookUrl = 'public/book/vue.js.epub'
 const booknavigation = ref(null)
@@ -51,6 +72,7 @@ rendition.display().then(() => {
 })
 //#endregion
 
+//#region function
 const prevPage = () => {
     rendition.prev()
 }
@@ -62,6 +84,18 @@ const nextPage = () => {
 const goto = (href) => {
     rendition.display(href)
 }
+
+const upload = () => {
+}
+
+const bookshelf = () => {
+}
+//#endregion
 </script>
 
-<style scoped></style>
+<style scoped>
+.book-icon {
+    font-size: 30px;
+    @apply text-blue-500 cursor-pointer mx-3;
+}
+</style>
