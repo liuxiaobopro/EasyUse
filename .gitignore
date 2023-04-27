@@ -2,3 +2,5 @@ build/bin
 node_modules
 frontend/dist
 frontend/package-lock.json
+frontend/public/book/
+frontend/wailsjs/runtime/

@@ -4,7 +4,7 @@ const routes = [
     {
         path: '/',
         name: '/',
-        component: import('../layouts/index.vue'),
+        component: import('@/layouts/index.vue'),
         meta: {
             title: '首页',
         },
@@ -12,7 +12,7 @@ const routes = [
             {
                 path: '/',
                 name: '/',
-                component: import('../pages/index.vue'),
+                component: import('@/pages/index.vue'),
                 meta: {
                     title: '首页',
                 }
@@ -20,11 +20,19 @@ const routes = [
             {
                 path: '/demo',
                 name: '/demo',
-                component: import('../pages/demo.vue'),
+                component: import('@/pages/demo/demo.vue'),
                 meta: {
-                    title: 'demo',
+                    title: '示例',
                 }
             },
+            {
+                path: '/book',
+                name: '/book',
+                component: import('@/pages/book/book.vue'),
+                meta: {
+                    title: '图书',
+                }
+            }
         ]
     },
     {

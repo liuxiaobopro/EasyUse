@@ -15,7 +15,7 @@ const { proxy } = getCurrentInstance();
 const list = ref([
     [
         {
-            content: "Demo",
+            content: "示例",
             path: "/demo"
         },
         {
