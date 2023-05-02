@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"os/user"
+	"path/filepath"
 )
 
 // App struct
@@ -24,4 +26,17 @@ func (a *App) startup(ctx context.Context) {
 // Greet returns a greeting for the given name
 func (a *App) Greet(name string) string {
 	return fmt.Sprintf("Hello %s, It's show time!", name)
+}
+
+// NewComputerEssentials 新电脑必备
+func (a *App) new_computer_essentials() {
+	// 获取电脑桌面对应的目录
+	currentUser, err := user.Current()
+	if err != nil {
+		fmt.Println("Failed to get current user:", err)
+		return
+	}
+
+	desktopPath := filepath.Join(currentUser.HomeDir, "Desktop")
+	fmt.Println("Desktop path:", desktopPath)
 }
