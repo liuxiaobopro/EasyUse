@@ -4,8 +4,6 @@ import (
 	"embed"
 	"flag"
 
-	"EasyUse/server"
-
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
@@ -24,10 +22,10 @@ func main() {
 	flag.Parse()
 
 	if c.Runmode == "server" {
-		server.Start()
+		// server.Start()
 	} else {
 		// server start
-		go server.Start()
+		// go server.Start()
 
 		// Create an instance of the app structure
 		app := NewApp()
@@ -45,6 +43,8 @@ func main() {
 			Bind: []interface{}{
 				app,
 			},
+			DisableResize: true,
+			// Debug:         options.Debug{OpenInspectorOnStartup: true},
 		})
 
 		if err != nil {
